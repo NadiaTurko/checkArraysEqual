@@ -1,33 +1,24 @@
-const seatNumber = prompt("Введіть номер місця, який вказаний в білеті");
-const mainPart = seatNumber > 0 && seatNumber < 37;
-const sidePart = seatNumber > 36 && seatNumber < 55;
-const getSeatNumber = (seatNumber) =>
-  seatNumber % 2 === 0 ? "верхнім" : "нижнім";
-const getSideSeatNumber = (seatNumber) =>
-  seatNumber % 2 === 0 ? "бічним верхнім" : "бічним нижнім";
+// задача номер 1
 
-const getKupeNumber = function (seatNumber) {
-  if (mainPart) {
-    return Math.round(++seatNumber / 4);
-  } else if (sidePart) {
-    return Math.round((55 - seatNumber) / 2);
-  }
+// реалізувати функцію яка приймає два параметри масиви та вертає
+//  значення  boolean якщо вони ідентичні один одному
+
+// const checkArraysEqual =(listOne, listTwo ) => { .... };
+
+// examples
+
+const checkArraysEqual = function (listOne, listTwo) {
+  const checkElement = listOne.every(function (element, index) {
+    return element === listTwo[index];
+  });
+  return checkElement;
+  //   const checkLength = listOne.length === listTwo.length;
+  //   if (checkElement === true && checkLength === true) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
 };
-const messageSeatNumber = function (seatNumber) {
-  if (mainPart) {
-    return alert(
-      `Ваше місце номер ${seatNumber} є ${getSeatNumber(
-        seatNumber
-      )} в ${getKupeNumber(seatNumber)} купе`
-    );
-  } else if (sidePart) {
-    return alert(
-      `Ваше місце номер ${seatNumber} є ${getSideSeatNumber(
-        seatNumber
-      )} в ${getKupeNumber(seatNumber)} купе`
-    );
-  } else {
-    return alert("Ви вказали місце невірно");
-  }
-};
-const resultSeatNumber = messageSeatNumber(seatNumber);
+console.log(checkArraysEqual([], [])); // should return true
+console.log(checkArraysEqual([1], [])); // should return false
+console.log(checkArraysEqual([1, 5, 4], [1, 4, 5])); // should return true
